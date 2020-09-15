@@ -1,4 +1,8 @@
 <resources>
 	<string name="More">More</string>
 	<string name="Less">Less</string>
+	<string name="Start_activity_normal">Start activity (normal)</string>
+	<string name="Start_activity_result">Start activity (result)</string>
+	<string name="Start_activity_result_with_data">Start activity (result) (with data)</string>
+	<string name="End">End</string>
 </resources>
