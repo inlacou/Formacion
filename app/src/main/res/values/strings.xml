@@ -1,3 +1,5 @@
 <resources>
 	<string name="app_name">FiveDaysApp</string>
+	<string name="More">More</string>
+	<string name="Less">Less</string>
 </resources>
