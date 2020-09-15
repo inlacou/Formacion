@@ -9,9 +9,40 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "RC1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    def base = "Room"
+    def targetE = ""
+    def usageE = ""
+
+    flavorDimensions "targetEnvironment", "usageEnvironment"
+    productFlavors {
+        external {
+            dimension "usageEnvironment"
+            usageE = ""
+            buildConfigField 'boolean', 'POPULATE', 'false' //used to prepopulate fields on everyday work (false on external environment)
+        }
+        internal {
+            dimension "usageEnvironment"
+            usageE = "-internal"
+            buildConfigField 'boolean', 'POPULATE', 'true' //used to prepopulate fields on everyday work (true on internal environment)
+        }
+        production {
+            dimension "targetEnvironment"
+            targetE = ""
+            resValue "string", "app_name", "$base"
+            buildConfigField 'String', 'HOST', '"YourProductionUrlhere"'
+        }
+        development {
+            dimension "targetEnvironment"
+            applicationIdSuffix = ".dev"
+            targetE = "-dev"
+            resValue "string", "app_name", "$base$usageE$targetE"
+            buildConfigField 'String', 'HOST', '"YourDebugUrlhere"'
+        }
     }
 
     buildTypes {
