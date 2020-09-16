@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.ui.result;
+package com.inlacou.fivedaysapp.ui.activities.result;
 
 class ResultActivityController {
 	

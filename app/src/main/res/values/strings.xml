@@ -12,6 +12,9 @@
 	<string name="Open_on_browser">Open on browser</string>
 	<string name="Open_on_webview">Open on webview</string>
 	<string name="Fruit">Fruta</string>
+	<string name="Yes">Yes</string>
+	<string name="No">No</string>
+	<string name="Maybe">Maybe</string>
 	<string-array name="fruits">
 		<item>Manzana</item>
 		<item>Pera</item>

@@ -15,16 +15,24 @@
 		android:name=".general.AppCtrl"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".ui.main.MainActivity">
+		<activity android:name=".ui.activities.main.MainActivity"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustResize">
+		</activity>
+		
+		<activity android:name=".ui.activities.result.ResultActivity"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustResize">
+		</activity>
+		
+		<activity android:name=".ui.activities.frame.FrameAct"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustResize">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		
-		<activity android:name=".ui.result.ResultActivity"
-			android:screenOrientation="portrait"
-			android:windowSoftInputMode="adjustResize"/>
 		
 	</application>
 

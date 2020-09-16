@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.ui.main;
+package com.inlacou.fivedaysapp.ui.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
