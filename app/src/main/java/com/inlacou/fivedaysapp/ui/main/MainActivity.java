@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 	public Button btStartResult = null;
 	public Button btStartResultWithData = null;
 	public Button btStartBrowser = null;
+	public EditText etUrl = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
 		btStartResult = findViewById(R.id.bt_start_activity_result);
 		btStartResultWithData = findViewById(R.id.bt_start_activity_result_with_data);
 		btStartBrowser = findViewById(R.id.bt_start_browser);
+		etUrl = findViewById(R.id.et_url);
 	}
 	
 	private void populate() {
 		updateValue();
+		etUrl.setText(model.url);
 	}
 	
 	private void setListeners() {
@@ -90,6 +96,22 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				controller.onButtonOpenBrowserClick();
+			}
+		});
+		etUrl.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+			
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+			
+			}
+			
+			@Override
+			public void afterTextChanged(Editable editable) {
+				model.url = editable.toString();
 			}
 		});
 	}

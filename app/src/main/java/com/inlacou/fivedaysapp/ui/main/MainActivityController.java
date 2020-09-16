@@ -56,7 +56,7 @@ class MainActivityController {
 	}
 	
 	public void onButtonOpenBrowserClick() {
-		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.url));
 		view.startActivity(intent);
 	}
 }

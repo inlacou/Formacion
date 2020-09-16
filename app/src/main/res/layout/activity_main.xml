@@ -59,6 +59,11 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="@string/Start_activity_result_with_data"/>
+		<EditText
+			android:id="@+id/et_url"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/Url_to_look_for"/>
 		<Button
 			android:id="@+id/bt_start_browser"
 			android:layout_width="wrap_content"
