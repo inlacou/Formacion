@@ -2,6 +2,7 @@ package com.inlacou.fivedaysapp.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
@@ -52,5 +53,10 @@ class MainActivityController {
 		}else if(resultCode==Activity.RESULT_CANCELED) {
 			view.showToast("RESULT_CANCELED");
 		}
+	}
+	
+	public void onButtonOpenBrowserClick() {
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+		view.startActivity(intent);
 	}
 }

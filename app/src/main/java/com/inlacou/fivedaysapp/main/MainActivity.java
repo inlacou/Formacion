@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 	public Button btStartNormal = null;
 	public Button btStartResult = null;
 	public Button btStartResultWithData = null;
+	public Button btStartBrowser = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 		btStartNormal = findViewById(R.id.bt_start_activity_normal);
 		btStartResult = findViewById(R.id.bt_start_activity_result);
 		btStartResultWithData = findViewById(R.id.bt_start_activity_result_with_data);
+		btStartBrowser = findViewById(R.id.bt_start_browser);
 	}
 	
 	private void populate() {
@@ -82,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				controller.onButtonStartResultWithDataClick();
+			}
+		});
+		btStartBrowser.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				controller.onButtonOpenBrowserClick();
 			}
 		});
 	}
