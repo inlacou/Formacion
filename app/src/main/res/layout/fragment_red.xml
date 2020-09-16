@@ -6,10 +6,22 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<ImageButton
-		android:id="@+id/ib_dialog"
-		android:layout_width="40dp"
-		android:layout_height="40dp"
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:layout_centerInParent="true"
-		android:src="@color/red"/>
+		android:orientation="vertical">
+		<CheckBox
+			android:id="@+id/cb_handle_click"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:text="Handle dialog button click"/>
+		<ImageButton
+			android:id="@+id/ib_dialog"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_gravity="center_horizontal"
+			android:src="@color/red"/>
+	</LinearLayout>
 </RelativeLayout>

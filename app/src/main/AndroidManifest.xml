@@ -26,7 +26,7 @@
 		</activity>
 		
 		<activity android:name=".ui.activities.frame.FrameAct"
-			android:screenOrientation="portrait"
+			android:screenOrientation="fullSensor"
 			android:windowSoftInputMode="adjustResize">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
