@@ -1,13 +1,12 @@
 package com.inlacou.fivedaysapp.ui.activities.frame;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.inlacou.fivedaysapp.R;
-import com.inlacou.fivedaysapp.ui.fragments.RedFragment;
+import com.inlacou.fivedaysapp.ui.fragments.RedFrag;
 
 public class FrameAct extends AppCompatActivity {
 	
@@ -31,7 +30,7 @@ public class FrameAct extends AppCompatActivity {
 	
 	private void populate() {
 		final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-		transaction.replace(R.id.fl, new RedFragment());
+		transaction.replace(R.id.fl, new RedFrag());
 		transaction.addToBackStack(null);
 		transaction.commit();
 	}
