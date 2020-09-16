@@ -6,4 +6,5 @@
 	<string name="Start_activity_result_with_data">Start activity (result) (with data)</string>
 	<string name="End">End</string>
 	<string name="Open_any_browser_implicit_intent">Open any browser (implicit intent)</string>
+	<string name="Value_two_points">Value:</string>
 </resources>
