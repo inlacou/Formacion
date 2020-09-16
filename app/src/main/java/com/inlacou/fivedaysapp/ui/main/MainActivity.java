@@ -9,7 +9,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
 	public Button btLess = null;
 	public Button btStartNormal = null;
 	public Button btStartResult = null;
-	public Button btStartResultWithData = null;
 	public Button btStartBrowser = null;
 	public EditText etUrl = null;
-	public CheckedTextView ctvStartActWithData = null;
+	public CheckBox cbStartActWithData = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
 		btLess = findViewById(R.id.bt_less);
 		btStartNormal = findViewById(R.id.bt_start_activity_normal);
 		btStartResult = findViewById(R.id.bt_start_activity_result);
-		btStartResultWithData = findViewById(R.id.bt_start_activity_result_with_data);
 		btStartBrowser = findViewById(R.id.bt_start_browser);
 		etUrl = findViewById(R.id.et_url);
-		ctvStartActWithData = findViewById(R.id.ctv_start_act_with_data);
+		cbStartActWithData = findViewById(R.id.cb_start_act_with_data);
 	}
 	
 	private void populate() {
 		updateValue();
 		etUrl.setText(model.url);
+		cbStartActWithData.setChecked(model.sendDataOnStartActivityForResult);
 	}
 	
 	private void setListeners() {
@@ -89,12 +90,6 @@ public class MainActivity extends AppCompatActivity {
 				controller.onButtonStartResultClick();
 			}
 		});
-		btStartResultWithData.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				controller.onButtonStartResultWithDataClick();
-			}
-		});
 		btStartBrowser.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -102,19 +97,14 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 		etUrl.addTextChangedListener(new TextWatcher() {
+			@Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+			@Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+			@Override public void afterTextChanged(Editable editable) { model.url = editable.toString(); }
+		});
+		cbStartActWithData.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-			
-			}
-			
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-			
-			}
-			
-			@Override
-			public void afterTextChanged(Editable editable) {
-				model.url = editable.toString();
+			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+				model.sendDataOnStartActivityForResult = b;
 			}
 		});
 	}

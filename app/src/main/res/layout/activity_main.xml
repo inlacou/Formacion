@@ -47,13 +47,12 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="@string/Start_activity_normal"/>
-		<CheckedTextView
-			android:id="@+id/ctv_start_act_with_data"
-			android:layout_width="match_parent"
+		<CheckBox
+			android:id="@+id/cb_start_act_with_data"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:checked="true"
+			android:layout_gravity="center_horizontal"
 			android:gravity="center"
-			android:checkMark="@android:drawable/star_off"
 			android:text="@string/Start_activity_with_data"/>
 		<Button
 			android:id="@+id/bt_start_activity_result"
@@ -61,12 +60,6 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="@string/Start_activity_result"/>
-		<Button
-			android:id="@+id/bt_start_activity_result_with_data"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal"
-			android:text="@string/Start_activity_result_with_data"/>
 		<EditText
 			android:id="@+id/et_url"
 			android:layout_width="match_parent"

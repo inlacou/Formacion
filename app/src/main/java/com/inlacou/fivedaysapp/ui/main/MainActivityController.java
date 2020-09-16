@@ -35,12 +35,10 @@ class MainActivityController {
 	}
 	
 	public void onButtonStartResultClick() {
-		view.startActivityForResult(new Intent(view, ResultActivity.class), REQUEST_CODE_RESULT);
-	}
-	
-	public void onButtonStartResultWithDataClick() {
 		Intent intent = new Intent(view, ResultActivity.class);
-		intent.putExtra("data", "some string");
+		if(model.sendDataOnStartActivityForResult) {
+			intent.putExtra("data", "some string");
+		}
 		view.startActivityForResult(intent, REQUEST_CODE_RESULT);
 	}
 	

@@ -4,5 +4,6 @@ class MainActivityModel {
 	
 	protected int currentValue = 0;
 	protected String url = "http://google.com";
+	protected Boolean sendDataOnStartActivityForResult = false;
 	
 }
