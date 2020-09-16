@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 	public Button btStartBrowser = null;
 	public EditText etUrl = null;
 	public CheckBox cbStartActWithData = null;
+	public View llStartActWithData = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 		btStartBrowser = findViewById(R.id.bt_start_browser);
 		etUrl = findViewById(R.id.et_url);
 		cbStartActWithData = findViewById(R.id.cb_start_act_with_data);
+		llStartActWithData = findViewById(R.id.ll_start_act_with_data);
 	}
 	
 	private void populate() {
@@ -66,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 	}
 	
 	private void setListeners() {
+		llStartActWithData.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				cbStartActWithData.setChecked(!cbStartActWithData.isChecked());
+			}
+		});
 		btMore.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
