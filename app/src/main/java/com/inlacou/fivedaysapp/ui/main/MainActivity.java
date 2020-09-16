@@ -3,6 +3,7 @@ package com.inlacou.fivedaysapp.ui.main;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.appcompat.widget.AppCompatSpinner;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
@@ -19,7 +23,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.radiobutton.MaterialRadioButton;
+import com.google.android.material.textview.MaterialTextView;
 import com.inlacou.fivedaysapp.R;
+
+import java.util.Arrays;
 
 import timber.log.Timber;
 
@@ -28,19 +38,21 @@ public class MainActivity extends AppCompatActivity {
 	private MainActivityModel model = new MainActivityModel();
 	private MainActivityController controller = new MainActivityController(this, model);
 	
-	public TextView tvValue = null;
-	public Button btMore = null;
-	public Button btLess = null;
-	public Button btStartNormal = null;
-	public Button btStartResult = null;
-	public Button btStartBrowser = null;
-	public EditText etUrl = null;
-	public CheckBox cbStartActWithData = null;
+	public MaterialTextView tvValue = null;
+	public MaterialButton btMore = null;
+	public MaterialButton btLess = null;
+	public MaterialButton btStartNormal = null;
+	public MaterialButton btStartResult = null;
+	public MaterialButton btStartBrowser = null;
+	public MaterialTextView etUrl = null;
+	public MaterialCheckBox cbStartActWithData = null;
 	public View llStartActWithData = null;
-	public AppCompatRadioButton cbOpenBrowser = null;
-	public AppCompatRadioButton cbOpenWebView = null;
+	public MaterialRadioButton cbOpenBrowser = null;
+	public MaterialRadioButton cbOpenWebView = null;
 	public RadioGroup rgOpenTarget = null;
 	public WebView webview = null;
+	public AppCompatSpinner spinner = null;
+	public AutoCompleteTextView actvFruit = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +82,15 @@ public class MainActivity extends AppCompatActivity {
 		cbOpenWebView = findViewById(R.id.cb_open_webview);
 		rgOpenTarget = findViewById(R.id.rg_open_target);
 		webview = findViewById(R.id.webview);
+		spinner = findViewById(R.id.spinner);
+		actvFruit = findViewById(R.id.actv_fruit);
 	}
 	
 	private void populate() {
 		updateValue();
 		etUrl.setText(model.url);
 		cbStartActWithData.setChecked(model.sendDataOnStartActivityForResult);
+		actvFruit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.fruits)));
 	}
 	
 	private void setListeners() {
@@ -134,6 +149,16 @@ public class MainActivity extends AppCompatActivity {
 				}else{
 					controller.onCheckBoxOpenWebViewChecked();
 				}
+			}
+		});
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				Timber.d("item selected index: " + i + " | item: " + getResources().getStringArray(R.array.fruits)[i]);
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> adapterView) {
+				Timber.d("item selected: none");
 			}
 		});
 	}

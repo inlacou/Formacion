@@ -11,4 +11,17 @@
 	<string name="Start_activity_with_data">Start activity with data</string>
 	<string name="Open_on_browser">Open on browser</string>
 	<string name="Open_on_webview">Open on webview</string>
+	<string name="Fruit">Fruta</string>
+	<string-array name="fruits">
+		<item>Manzana</item>
+		<item>Pera</item>
+		<item>Plátano</item>
+		<item>Granada</item>
+		<item>Higo</item>
+		<item>Kiwi</item>
+		<item>Mango</item>
+		<item>Aguacate</item>
+		<item>Gazpacho</item>
+		<item>Mochilo</item>
+	</string-array>
 </resources>
