@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 	public Button btStartResultWithData = null;
 	public Button btStartBrowser = null;
 	public EditText etUrl = null;
+	public CheckedTextView ctvStartActWithData = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 		btStartResultWithData = findViewById(R.id.bt_start_activity_result_with_data);
 		btStartBrowser = findViewById(R.id.bt_start_browser);
 		etUrl = findViewById(R.id.et_url);
+		ctvStartActWithData = findViewById(R.id.ctv_start_act_with_data);
 	}
 	
 	private void populate() {
