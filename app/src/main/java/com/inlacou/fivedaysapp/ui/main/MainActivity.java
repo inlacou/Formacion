@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.main;
+package com.inlacou.fivedaysapp.ui.main;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

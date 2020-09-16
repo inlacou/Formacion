@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.main;
+package com.inlacou.fivedaysapp.ui.main;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
-import com.inlacou.fivedaysapp.result.ResultActivity;
+import com.inlacou.fivedaysapp.ui.result.ResultActivity;
 
 class MainActivityController {
 	

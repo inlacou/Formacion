@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.main;
+package com.inlacou.fivedaysapp.ui.main;
 
 class MainActivityModel {
 	
