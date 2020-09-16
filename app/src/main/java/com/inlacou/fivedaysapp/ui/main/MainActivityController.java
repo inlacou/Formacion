@@ -54,7 +54,18 @@ class MainActivityController {
 	}
 	
 	public void onButtonOpenBrowserClick() {
-		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.url));
-		view.startActivity(intent);
+		if(model.openOnBrowser) {
+			view.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(model.url)));
+		} else {
+			view.loadUrlOnWebView(model.url);
+		}
+	}
+	
+	public void onCheckBoxOpenBrowserChecked() {
+		model.openOnBrowser = true;
+	}
+	
+	public void onCheckBoxOpenWebViewChecked() {
+		model.openOnBrowser = false;
 	}
 }

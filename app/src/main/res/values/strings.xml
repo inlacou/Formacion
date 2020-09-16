@@ -5,8 +5,10 @@
 	<string name="Start_activity_result">Start activity (result)</string>
 	<string name="Start_activity_result_with_data">Start activity (result) (with data)</string>
 	<string name="End">End</string>
-	<string name="Open_any_browser_implicit_intent">Open any browser (implicit intent)</string>
+	<string name="Open_url">Open url</string>
 	<string name="Value_two_points">Value:</string>
 	<string name="Url_to_look_for">Url to look for on a browser</string>
 	<string name="Start_activity_with_data">Start activity with data</string>
+	<string name="Open_on_browser">Open on browser</string>
+	<string name="Open_on_webview">Open on webview</string>
 </resources>

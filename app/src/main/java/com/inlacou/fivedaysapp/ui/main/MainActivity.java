@@ -2,17 +2,20 @@ package com.inlacou.fivedaysapp.ui.main;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRadioButton;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 	public EditText etUrl = null;
 	public CheckBox cbStartActWithData = null;
 	public View llStartActWithData = null;
+	public AppCompatRadioButton cbOpenBrowser = null;
+	public AppCompatRadioButton cbOpenWebView = null;
+	public RadioGroup rgOpenTarget = null;
+	public WebView webview = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
 		etUrl = findViewById(R.id.et_url);
 		cbStartActWithData = findViewById(R.id.cb_start_act_with_data);
 		llStartActWithData = findViewById(R.id.ll_start_act_with_data);
+		cbOpenBrowser = findViewById(R.id.cb_open_browser);
+		cbOpenWebView = findViewById(R.id.cb_open_webview);
+		rgOpenTarget = findViewById(R.id.rg_open_target);
+		webview = findViewById(R.id.webview);
 	}
 	
 	private void populate() {
@@ -115,6 +126,16 @@ public class MainActivity extends AppCompatActivity {
 				model.sendDataOnStartActivityForResult = b;
 			}
 		});
+		rgOpenTarget.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup radioGroup, int i) {
+				if(radioGroup.getCheckedRadioButtonId()==R.id.cb_open_browser) {
+					controller.onCheckBoxOpenBrowserChecked();
+				}else{
+					controller.onCheckBoxOpenWebViewChecked();
+				}
+			}
+		});
 	}
 	
 	public void updateValue() {
@@ -167,4 +188,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onDestroy();
 	}
 	
+	public void loadUrlOnWebView(String url) {
+		webview.loadUrl(url);
+	}
 }

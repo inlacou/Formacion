@@ -75,12 +75,32 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="@string/Url_to_look_for"/>
+		<RadioGroup
+			android:id="@+id/rg_open_target"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:checkedButton="@id/cb_open_browser">
+			<androidx.appcompat.widget.AppCompatRadioButton
+				android:id="@+id/cb_open_browser"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/Open_on_browser"/>
+			<androidx.appcompat.widget.AppCompatRadioButton
+				android:id="@+id/cb_open_webview"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/Open_on_webview"/>
+		</RadioGroup>
 		<Button
 			android:id="@+id/bt_start_browser"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:text="@string/Open_any_browser_implicit_intent"/>
+			android:text="@string/Open_url"/>
+		<WebView
+			android:id="@+id/webview"
+			android:layout_width="match_parent"
+			android:layout_height="200dp"/>
 	</LinearLayout>
 
 </LinearLayout>
