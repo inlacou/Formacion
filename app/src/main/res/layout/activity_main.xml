@@ -47,13 +47,22 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="@string/Start_activity_normal"/>
-		<CheckBox
-			android:id="@+id/cb_start_act_with_data"
+		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:gravity="center"
-			android:text="@string/Start_activity_with_data"/>
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:text="@string/Start_activity_with_data"/>
+			<CheckBox
+				android:id="@+id/cb_start_act_with_data"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"/>
+		</LinearLayout>
 		<Button
 			android:id="@+id/bt_start_activity_result"
 			android:layout_width="wrap_content"
