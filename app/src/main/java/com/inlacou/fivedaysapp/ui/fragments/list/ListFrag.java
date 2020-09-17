@@ -8,21 +8,24 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.inlacou.fivedaysapp.R;
+import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
-import timber.log.Timber;
-
-public class ListFrag extends Fragment {
+public class ListFrag extends BaseFragment {
 	
 	protected SwipeRefreshLayout srl = null;
 	protected RecyclerView rv = null;
 	
 	private ListFragMdl model = new ListFragMdl();
 	private ListFragCtrl controller = new ListFragCtrl(this, model);
+	
+	@Override
+	public String getTitle() {
+		return "Pokemon list";
+	}
 	
 	@Nullable
 	@Override

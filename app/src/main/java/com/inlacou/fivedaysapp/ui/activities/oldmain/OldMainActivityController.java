@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.ui.activities.main;
+package com.inlacou.fivedaysapp.ui.activities.oldmain;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,14 +8,14 @@ import androidx.annotation.Nullable;
 
 import com.inlacou.fivedaysapp.ui.activities.result.ResultActivity;
 
-class MainActivityController {
+class OldMainActivityController {
 	
 	public static int REQUEST_CODE_RESULT = 1337;
 	
-	private MainActivity view;
-	private MainActivityModel model;
+	private OldMainActivity view;
+	private OldMainActivityModel model;
 	
-	public MainActivityController(MainActivity view, MainActivityModel model) {
+	public OldMainActivityController(OldMainActivity view, OldMainActivityModel model) {
 		this.view = view;
 		this.model = model;
 	}

@@ -15,16 +15,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.inlacou.fivedaysapp.R;
+import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
 import timber.log.Timber;
 
-public class RedFrag extends Fragment {
+public class RedFrag extends BaseFragment {
 	
 	private RedFragMdl model = new RedFragMdl();
 	private RedFragCtrl controller = new RedFragCtrl(this, model);
 	
 	public ImageButton ibDialog = null;
 	public CheckBox cbHandleClick = null;
+	
+	public String getTitle() {
+		return "RED";
+	}
 	
 	@Nullable
 	@Override

@@ -1,6 +1,6 @@
-package com.inlacou.fivedaysapp.ui.activities.main;
+package com.inlacou.fivedaysapp.ui.activities.oldmain;
 
-class MainActivityModel {
+class OldMainActivityModel {
 	
 	public boolean openOnBrowser = true;
 	protected int currentValue = 0;

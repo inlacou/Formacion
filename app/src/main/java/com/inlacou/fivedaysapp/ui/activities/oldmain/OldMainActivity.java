@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.ui.activities.main;
+package com.inlacou.fivedaysapp.ui.activities.oldmain;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,10 +26,10 @@ import com.inlacou.fivedaysapp.R;
 
 import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity {
+public class OldMainActivity extends AppCompatActivity {
 	
-	private MainActivityModel model = new MainActivityModel();
-	private MainActivityController controller = new MainActivityController(this, model);
+	private OldMainActivityModel model = new OldMainActivityModel();
+	private OldMainActivityController controller = new OldMainActivityController(this, model);
 	
 	public MaterialTextView tvValue = null;
 	public MaterialButton btMore = null;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main_old);
 		
 		initialize();
 		

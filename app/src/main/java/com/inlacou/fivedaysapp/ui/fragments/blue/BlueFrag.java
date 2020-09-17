@@ -10,11 +10,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.inlacou.fivedaysapp.R;
+import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
-public class BlueFrag extends Fragment {
+public class BlueFrag extends BaseFragment {
 	
 	private BlueFragMdl model = new BlueFragMdl();
 	private BlueFragCtrl controller = new BlueFragCtrl(this, model);
+	
+	public String getTitle() {
+		return "BLUE";
+	}
 	
 	@Nullable
 	@Override
