@@ -5,11 +5,11 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
-public class ApiCtrl {
+public class OkhttpApiCtrl {
 	
-	public static ApiCtrl instance = new ApiCtrl();
+	public static OkhttpApiCtrl instance = new OkhttpApiCtrl();
 	
-	private ApiCtrl() {}
+	private OkhttpApiCtrl() {}
 	
 	private OkHttpClient client = new OkHttpClient();
 	

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ListFragMdl {
 	
-	public ArrayList<PokemonStub> list = new ArrayList<>();
+	protected Boolean useRetrofit = true;
+	protected ArrayList<PokemonStub> list = new ArrayList<>();
 
 }
