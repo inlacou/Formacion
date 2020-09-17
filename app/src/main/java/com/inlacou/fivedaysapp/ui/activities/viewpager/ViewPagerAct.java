@@ -2,11 +2,14 @@ package com.inlacou.fivedaysapp.ui.activities.viewpager;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.inlacou.fivedaysapp.R;
 
 public class ViewPagerAct extends AppCompatActivity {
@@ -19,6 +22,7 @@ public class ViewPagerAct extends AppCompatActivity {
 	 * and next wizard steps.
 	 */
 	private ViewPager2 viewPager;
+	private TabLayout tabLayout;
 	
 	/**
 	 * The pager adapter, which provides the pages to the view pager widget.
@@ -51,14 +55,20 @@ public class ViewPagerAct extends AppCompatActivity {
 	
 	private void initialize() {
 		viewPager = findViewById(R.id.viewpager);
+		tabLayout = findViewById(R.id.tablayout);
 	}
 	
 	private void populate() {
 		pagerAdapter = new ScreenSlidePagerAdapter(this);
 		viewPager.setAdapter(pagerAdapter);
+		new TabLayoutMediator(tabLayout, viewPager,
+				new TabLayoutMediator.TabConfigurationStrategy() {
+					@Override public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+						tab.setText("Tab " + (position + 1));
+					}
+				}).attach();
 	}
 	
-	private void setListeners() {
-	}
+	private void setListeners() {}
 	
 }
