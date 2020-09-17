@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -48,9 +49,22 @@ public class ViewPagerAct extends AppCompatActivity {
 		
 		initialize();
 		
+		configureActionBar();
+		
 		populate();
 		
 		setListeners();
+	}
+	
+	private void configureActionBar() {
+		Toolbar toolbar = findViewById(R.id.toolbar);
+		if (toolbar != null) {
+			setSupportActionBar(toolbar);
+			if(getSupportActionBar()!=null) {
+				getSupportActionBar().setTitle("Custom toolbar title");
+				//getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			}
+		}
 	}
 	
 	private void initialize() {
