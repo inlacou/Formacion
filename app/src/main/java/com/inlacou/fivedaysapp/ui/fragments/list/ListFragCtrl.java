@@ -51,7 +51,7 @@ public class ListFragCtrl {
 	
 	public void load() {
 		view.onStartLoad();
-		ApiCtrl.instance.getPokemonAsync(page, PAGE_SIZE, new Callback() {
+		ApiCtrl.instance.getPokemonAsync(page*PAGE_SIZE, PAGE_SIZE, new Callback() {
 			@Override
 			public void onFailure(@NotNull Call call, @NotNull IOException e) {
 				Timber.d("onFailure | exception: " + e.getMessage());

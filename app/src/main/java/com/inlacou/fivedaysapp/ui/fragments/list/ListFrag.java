@@ -1,6 +1,7 @@
 package com.inlacou.fivedaysapp.ui.fragments.list;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.inlacou.fivedaysapp.R;
+
+import timber.log.Timber;
 
 public class ListFrag extends Fragment {
 	
@@ -47,6 +50,16 @@ public class ListFrag extends Fragment {
 	private void setListeners() {
 		srl.setOnRefreshListener(() -> {
 			controller.update();
+		});
+		rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+				super.onScrollStateChanged(recyclerView, newState);
+				
+				if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+					controller.load();
+				}
+			}
 		});
 	}
 	
