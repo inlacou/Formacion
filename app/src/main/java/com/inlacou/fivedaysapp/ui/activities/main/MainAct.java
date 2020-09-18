@@ -8,10 +8,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.adapters.SidebarRvAdapter;
 import com.inlacou.fivedaysapp.business.MainSection;
+import com.inlacou.fivedaysapp.json.JsonParseExample;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
 import com.inlacou.fivedaysapp.ui.fragments.list.ListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
+import com.inlacou.fivedaysapp.xml.XmlParseExample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,8 +26,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.jodah.xsylum.XsylumException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import timber.log.Timber;
 
 public class MainAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	
@@ -51,6 +57,14 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 		populate();
 		
 		setListeners();
+		
+		Timber.d("json: " + JsonParseExample.parse().name);
+		try {
+			Timber.d("xml: " + XmlParseExample.parse().name);
+		} catch (XsylumException e) {
+			Timber.e("error arised from XmlParseExample: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	public void initialize() {
