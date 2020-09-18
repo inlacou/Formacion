@@ -32,6 +32,9 @@ public class Pokemon {
 	@SerializedName("types")
 	@Expose
 	public List<TypeSlot> typeSlots = null;
+	@SerializedName("sprites")
+	@Expose
+	public Sprites sprites = null;
 	@SerializedName("weight")
 	@Expose
 	public Integer weight;

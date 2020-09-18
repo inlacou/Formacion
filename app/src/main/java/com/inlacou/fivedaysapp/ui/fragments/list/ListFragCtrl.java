@@ -10,6 +10,8 @@ import com.inlacou.fivedaysapp.business.PokemonListResponse;
 import com.inlacou.fivedaysapp.business.PokemonStub;
 import com.inlacou.fivedaysapp.http.OkhttpApiCtrl;
 import com.inlacou.fivedaysapp.http.RetrofitApiCtrl;
+import com.inlacou.fivedaysapp.ui.activities.pokemon.detail.PokemonDetailAct;
+import com.inlacou.fivedaysapp.ui.activities.pokemon.detail.PokemonDetailActMdl;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -42,8 +44,7 @@ public class ListFragCtrl {
 				@Override
 				public void onResponse(Call call, Response response) throws IOException {
 					String body = response.body().string();
-					Pokemon pokemon = new Gson().fromJson(body, Pokemon.class);
-					
+					PokemonDetailAct.navigate(view.getActivity(), new PokemonDetailActMdl(new Gson().fromJson(body, Pokemon.class)));
 				}
 				@Override
 				public void onFailure(Call call, IOException e) {

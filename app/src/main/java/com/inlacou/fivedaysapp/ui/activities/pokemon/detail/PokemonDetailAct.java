@@ -4,23 +4,33 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.inlacou.fivedaysapp.R;
+import com.inlacou.fivedaysapp.ui.activities.BaseAct;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PokemonDetailAct extends AppCompatActivity {
+public class PokemonDetailAct extends BaseAct {
 	
 	private PokemonDetailActMdl model = null;
 	private PokemonDetailActCtrl controller = null;
 	
 	@BindView(R.id.tv_name) TextView tvName;
 	@BindView(R.id.tv_height) TextView tvHeight;
+	@BindView(R.id.iv_front) ImageView ivFront;
+	@BindView(R.id.iv_back) ImageView ivBack;
 	
 	public static void navigate(Activity activity, PokemonDetailActMdl model) {
 		Intent intent = new Intent(activity, PokemonDetailAct.class);
@@ -37,6 +47,8 @@ public class PokemonDetailAct extends AppCompatActivity {
 		
 		initialize();
 		
+		configureActionBar();
+		
 		populate();
 		
 		setListeners();
@@ -51,7 +63,29 @@ public class PokemonDetailAct extends AppCompatActivity {
 		ButterKnife.bind(this);
 	}
 	
-	public void populate() {}
+	private void configureActionBar() {
+		Toolbar toolbar = findViewById(R.id.toolbar);
+		if (toolbar != null) {
+			setSupportActionBar(toolbar);
+			if(getSupportActionBar()!=null) {
+				getSupportActionBar().setTitle(model.pokemon.name);
+				getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			}
+		}
+	}
+	
+	public void populate() {
+		tvName.setText(model.pokemon.name);
+		tvHeight.setText(model.pokemon.height.toString());
+		if(model.usePicasso) {
+			Picasso.get().load(model.pokemon.sprites.frontDefault).into(ivFront);
+			Picasso.get().load(model.pokemon.sprites.backDefault).into(ivBack);
+		} else {
+			Glide.with(this).load(model.pokemon.sprites.frontDefault).into(ivFront);
+			Glide.with(this).load(model.pokemon.sprites.backDefault).into(ivBack);
+		}
+	}
 	
 	public void setListeners() {}
+	
 }

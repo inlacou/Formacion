@@ -31,6 +31,12 @@
 			</intent-filter>
 		</activity>
 		
+		<activity android:name=".ui.activities.pokemon.detail.PokemonDetailAct"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustResize"
+			android:theme="@style/AppTheme.NoActionBar">
+		</activity>
+		
 		<activity android:name=".ui.activities.result.ResultActivity"
 			android:screenOrientation="portrait"
 			android:windowSoftInputMode="adjustResize">
