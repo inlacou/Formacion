@@ -3,13 +3,13 @@ package com.inlacou.fivedaysapp.business;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Type {
+public class TypeSlot {
 	
-	@SerializedName("name")
+	@SerializedName("slot")
 	@Expose
-	public String name;
-	@SerializedName("url")
+	public Integer slot;
+	@SerializedName("type")
 	@Expose
-	public String url;
+	public Type type;
 	
 }
