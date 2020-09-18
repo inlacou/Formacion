@@ -12,11 +12,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 public class RedFrag extends BaseFragment {
@@ -24,8 +26,8 @@ public class RedFrag extends BaseFragment {
 	private RedFragMdl model = new RedFragMdl();
 	private RedFragCtrl controller = new RedFragCtrl(this, model);
 	
-	public ImageButton ibDialog = null;
-	public CheckBox cbHandleClick = null;
+	@BindView(R.id.ib_dialog) ImageButton ibDialog;
+	@BindView(R.id.cb_handle_click) CheckBox cbHandleClick;
 	
 	public String getTitle() {
 		return "RED";
@@ -52,8 +54,7 @@ public class RedFrag extends BaseFragment {
 	}
 	
 	private void initialize(View rootView) {
-		ibDialog = rootView.findViewById(R.id.ib_dialog);
-		cbHandleClick = rootView.findViewById(R.id.cb_handle_click);
+		ButterKnife.bind(this, rootView);
 	}
 	
 	private void populate() {
@@ -61,18 +62,12 @@ public class RedFrag extends BaseFragment {
 	}
 	
 	private void setListeners() {
-		cbHandleClick.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-				model.handleFragmentDialogButtonClick = b;
-			}
-		});
-		ibDialog.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				controller.onRedButtonClick();
-			}
-		});
+		cbHandleClick.setOnCheckedChangeListener((compoundButton, b) -> model.handleFragmentDialogButtonClick = b);
+	}
+	
+	@OnClick(R.id.ib_dialog)
+	public void onRedButtonClick() {
+		controller.onRedButtonClick();
 	}
 	
 	public void showToast(String s) {
