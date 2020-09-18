@@ -112,4 +112,8 @@ public class ListFragCtrl {
 		}
 	}
 	
+	public void onPokemonListItemClick() {
+	
+	}
+	
 }

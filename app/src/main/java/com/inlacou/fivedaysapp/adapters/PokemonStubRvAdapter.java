@@ -55,6 +55,6 @@ public class PokemonStubRvAdapter extends RecyclerView.Adapter<RecyclerView.View
 	}
 	
 	public interface Callback {
-		void onClick(View view, int index, PokemonStub section);
+		void onClick(View view, int index, PokemonStub pokemonStub);
 	}
 }
