@@ -17,6 +17,9 @@
 	<string name="Maybe">Maybe</string>
 	<string name="navigation_drawer_open">Open</string>
 	<string name="navigation_drawer_close">Close</string>
+	<string name="Some_action">Alguna acción</string>
+	<string name="ongoing_notification_channel_title">Titulo del canal de notificaciones</string>
+	<string name="ongoing_notification_channel_description">Descripcion del canal de notificaciones</string>
 	<string-array name="fruits">
 		<item>Manzana</item>
 		<item>Pera</item>
