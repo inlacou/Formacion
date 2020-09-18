@@ -8,6 +8,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.adapters.SidebarRvAdapter;
 import com.inlacou.fivedaysapp.business.MainSection;
+import com.inlacou.fivedaysapp.business.Pokemon;
+import com.inlacou.fivedaysapp.datapersistence.sharedpreferences.SharedPrefManager;
+import com.inlacou.fivedaysapp.datapersistence.sqlite.PokemonDb;
 import com.inlacou.fivedaysapp.json.JsonParseExample;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
@@ -28,7 +31,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.jodah.xsylum.XsylumException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import timber.log.Timber;
@@ -65,6 +67,25 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 			Timber.e("error arised from XmlParseExample: " + e.getMessage());
 			e.printStackTrace();
 		}
+		
+		SharedPrefManager.setAuthToken(this, "my auth token");
+		Timber.d("retrieved auth token from sharedpref: " + SharedPrefManager.getAuthToken(this));
+		Timber.d("retrieved favorite pokemon id token from sharedpref: " + SharedPrefManager.getFavoritePokemonId(this));
+		SharedPrefManager.setFavoritePokemonId(this, 1);
+		Timber.d("retrieved favorite pokemon id token from sharedpref: " + SharedPrefManager.getFavoritePokemonId(this));
+		SharedPrefManager.setFavoritePokemonId(this, null);
+		
+		Pokemon bulbasaur = new Pokemon(1, "Bulbasaur", 67);
+		Pokemon ivysaur = new Pokemon(2, "Ivysaur", 77);
+		Pokemon venusaur = new Pokemon(3, "Venusaur", 107);
+		
+		PokemonDb.insertLikedPokemon(this, bulbasaur);
+		PokemonDb.insertLikedPokemon(this, ivysaur);
+		Timber.d("retrieved liked pokemon from sqlite: " + PokemonDb.retrieveLikedPokemon(this));
+		Timber.d("insert " + venusaur.name + " into database");
+		PokemonDb.insertLikedPokemon(this, venusaur);
+		Timber.d("retrieved liked pokemon from sqlite: " + PokemonDb.retrieveLikedPokemon(this));
+		PokemonDb.deleteLikedPokemon(this);
 	}
 	
 	public void initialize() {

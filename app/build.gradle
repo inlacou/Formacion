@@ -14,7 +14,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    def base = "Room"
+    def base = "Pokedex"
     def targetE = ""
     def usageE = ""
 

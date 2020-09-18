@@ -11,7 +11,7 @@ public class XmlParseExample {
 	
 	private static String EXAMPLE_XML = "<Pokemon>" +
 			"   <id>1</id>" +
-			"   <name>\"Bulbasaur\"</name>" +
+			"   <name>Bulbasaur</name>" +
 			"       <types>" +
 			"       <typeSlot>" +
 			"           <slot>1</slot>" +
