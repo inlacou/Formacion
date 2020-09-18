@@ -5,8 +5,8 @@ import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.inlacou.fivedaysapp.json.JsonParseExample;
-import com.inlacou.fivedaysapp.xml.XmlParseExample;
+import com.inlacou.fivedaysapp.parse.json.JsonParseExample;
+import com.inlacou.fivedaysapp.parse.xml.XmlParseExample;
 
 import net.jodah.xsylum.XsylumException;
 

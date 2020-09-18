@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.xml;
+package com.inlacou.fivedaysapp.parse.xml;
 
 import com.inlacou.fivedaysapp.business.Pokemon;
 

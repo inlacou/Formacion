@@ -6,10 +6,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.inlacou.fivedaysapp.datapersistence.sharedpreferences.SharedPrefManager;
-import com.inlacou.fivedaysapp.json.JsonParseExample;
-import com.inlacou.fivedaysapp.xml.XmlParseExample;
-
-import net.jodah.xsylum.XsylumException;
 
 import org.junit.Before;
 import org.junit.Test;

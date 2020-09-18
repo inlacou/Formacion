@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.json;
+package com.inlacou.fivedaysapp.parse.json;
 
 import com.google.gson.Gson;
 import com.inlacou.fivedaysapp.business.Pokemon;
