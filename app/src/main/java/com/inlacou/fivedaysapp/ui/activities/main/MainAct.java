@@ -2,21 +2,15 @@ package com.inlacou.fivedaysapp.ui.activities.main;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.adapters.SidebarRvAdapter;
 import com.inlacou.fivedaysapp.business.MainSection;
-import com.inlacou.fivedaysapp.business.Pokemon;
-import com.inlacou.fivedaysapp.datapersistence.sharedpreferences.SharedPrefManager;
-import com.inlacou.fivedaysapp.datapersistence.sqlite.PokemonDb;
-import com.inlacou.fivedaysapp.json.JsonParseExample;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
 import com.inlacou.fivedaysapp.ui.fragments.list.ListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
-import com.inlacou.fivedaysapp.xml.XmlParseExample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -37,9 +31,9 @@ import butterknife.ButterKnife;
 public class MainAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	
 	@BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
-	@BindView(R.id.toolbar) Toolbar toolbar = null;
-	@BindView(R.id.rv_buttons) RecyclerView rvDrawer = null;
-	@BindView(R.id.nav_view) NavigationView navView = null;
+	@BindView(R.id.toolbar) Toolbar toolbar;
+	@BindView(R.id.rv_buttons) RecyclerView rvDrawer;
+	@BindView(R.id.nav_view) NavigationView navView;
 	
 	protected Fragment fragment = null;
 	private ActionBarDrawerToggle toggle = null;
