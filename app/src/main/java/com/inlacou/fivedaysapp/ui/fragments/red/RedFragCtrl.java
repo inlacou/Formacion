@@ -1,5 +1,7 @@
 package com.inlacou.fivedaysapp.ui.fragments.red;
 
+import android.content.Intent;
+
 import com.inlacou.fivedaysapp.ui.fragments.dialog.DialogFragment;
 
 class RedFragCtrl {
@@ -23,5 +25,9 @@ class RedFragCtrl {
 			}
 		});
 		dialog.show(view.getActivity().getSupportFragmentManager(), "blue fragment as dialog");
+		
+		Intent intent = new Intent();
+		intent.setAction(view.getActivity().getPackageName()+".CUSTOM_INTENT");
+		view.getActivity().sendBroadcast(intent);
 	}
 }
