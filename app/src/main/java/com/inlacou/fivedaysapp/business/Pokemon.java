@@ -1,18 +1,42 @@
 package com.inlacou.fivedaysapp.business;
 
+import java.util.List;
 import java.util.Objects;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Pokemon {
 	
-	public int id = 0;
-	public String name = null;
-	public int height = 0;
+	@SerializedName("base_experience")
+	@Expose
+	public Integer baseExperience;
+	@SerializedName("height")
+	@Expose
+	public Integer height;
+	@SerializedName("id")
+	@Expose
+	public Integer id;
+	@SerializedName("is_default")
+	@Expose
+	public Boolean isDefault;
+	@SerializedName("location_area_encounters")
+	@Expose
+	public String locationAreaEncounters;
+	@SerializedName("name")
+	@Expose
+	public String name;
+	@SerializedName("order")
+	@Expose
+	public Integer order;
+	@SerializedName("types")
+	@Expose
+	public List<TypeSlot> typeSlots = null;
+	@SerializedName("weight")
+	@Expose
+	public Integer weight;
 	
-	public Pokemon(int id, String name, int height) {
-		this.id = id;
-		this.name = name;
-		this.height = height;
-	}
+	
 	
 	@Override
 	public String toString() {
@@ -37,4 +61,11 @@ public class Pokemon {
 	public int hashCode() {
 		return Objects.hash(id, name, height);
 	}
+	
+	public Pokemon(int id, String name, int height) {
+		this.id = id;
+		this.name = name;
+		this.height = height;
+	}
+	
 }
