@@ -29,18 +29,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.jodah.xsylum.XsylumException;
-
 import java.util.Arrays;
 
-import timber.log.Timber;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	
-	private DrawerLayout drawerLayout = null;
-	private Toolbar toolbar = null;
-	private RecyclerView rvDrawer = null;
-	private NavigationView navView = null;
+	@BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
+	@BindView(R.id.toolbar) Toolbar toolbar = null;
+	@BindView(R.id.rv_buttons) RecyclerView rvDrawer = null;
+	@BindView(R.id.nav_view) NavigationView navView = null;
 	
 	protected Fragment fragment = null;
 	private ActionBarDrawerToggle toggle = null;
@@ -62,10 +61,7 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 	}
 	
 	public void initialize() {
-		navView = findViewById(R.id.nav_view);
-		rvDrawer = findViewById(R.id.rv_buttons);
-		toolbar = findViewById(R.id.toolbar);
-		drawerLayout = findViewById(R.id.drawer_layout);
+		ButterKnife.bind(this);
 		toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		rvDrawer = drawerLayout.findViewById(R.id.rv_buttons);
 	}
@@ -77,12 +73,9 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 		
 		if(model.drawerOpenedOnStart) drawerLayout.openDrawer(GravityCompat.START);
 		
-		adapterDrawer = new SidebarRvAdapter(Arrays.asList(MainSection.values()), new SidebarRvAdapter.Callback() {
-			@Override
-			public void onClick(View view, int index, MainSection section) {
-				model.section = section;
-				loadSection(model.section);
-			}
+		adapterDrawer = new SidebarRvAdapter(Arrays.asList(MainSection.values()), (view, index, section) -> {
+			model.section = section;
+			loadSection(model.section);
 		});
 		rvDrawer.setAdapter(adapterDrawer);
 		rvDrawer.setNestedScrollingEnabled(false);
