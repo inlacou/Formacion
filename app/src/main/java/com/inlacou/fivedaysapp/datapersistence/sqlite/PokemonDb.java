@@ -195,6 +195,22 @@ public class PokemonDb {
 	}
 	
 	/**
+	 * Deletes pokemon that matches with the given pokemon. Should be one or zero.
+	 * @param context
+	 * @param pokemon to look for
+	 * @return number of rows deleted (should be one or zero)
+	 */
+	public static int deleteLikedPokemon(Context context, Pokemon pokemon) {
+		SQLiteDatabase db = new SqliteCtrl(context).getWritableDatabase();
+		// Define 'where' part of query.
+		String selection = PokemonContract.COLUMN_NAME_ID + " = ?";
+		// Specify arguments in placeholder order.
+		String[] selectionArgs = { pokemon.id+"" };
+		// Issue SQL statement.
+		return db.delete(PokemonContract.TABLE_NAME, selection, selectionArgs);
+	}
+	
+	/**
 	 * Deletes all pokemon on database.
 	 * @param context
 	 * @return number of rows deleted

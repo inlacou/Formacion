@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,8 @@ public class PokemonDetailAct extends BaseAct {
 	@BindView(R.id.tv_height) TextView tvHeight;
 	@BindView(R.id.iv_front) ImageView ivFront;
 	@BindView(R.id.iv_back) ImageView ivBack;
+	@BindView(R.id.cb_liked) CheckBox cbLiked;
+	@BindView(R.id.cb_favorite) CheckBox cbFavorited;
 	
 	public static void navigate(Activity activity, PokemonDetailActMdl model) {
 		Intent intent = new Intent(activity, PokemonDetailAct.class);
@@ -84,8 +88,24 @@ public class PokemonDetailAct extends BaseAct {
 			Glide.with(this).load(model.pokemon.sprites.frontDefault).into(ivFront);
 			Glide.with(this).load(model.pokemon.sprites.backDefault).into(ivBack);
 		}
+		controller.populate();
 	}
 	
-	public void setListeners() {}
+	public void setListeners() {
+		cbLiked.setOnCheckedChangeListener((compoundButton, b) -> {
+			controller.onLikedChange(b);
+		});
+		cbFavorited.setOnCheckedChangeListener((compoundButton, b) -> {
+			controller.onFavoritedChange(b);
+		});
+	}
+	
+	protected void setLiked(Boolean liked) {
+		cbLiked.setChecked(liked);
+	}
+	
+	protected void setFavorited(Boolean liked) {
+		cbFavorited.setChecked(liked);
+	}
 	
 }

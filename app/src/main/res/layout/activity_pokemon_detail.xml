@@ -52,5 +52,15 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			tools:text="67"/>
+		<CheckBox
+			android:id="@+id/cb_liked"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/Liked"/>
+		<CheckBox
+			android:id="@+id/cb_favorite"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/Favorited"/>
 	</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

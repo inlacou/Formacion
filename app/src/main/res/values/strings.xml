@@ -20,6 +20,8 @@
 	<string name="Some_action">Alguna acción</string>
 	<string name="ongoing_notification_channel_title">Titulo del canal de notificaciones</string>
 	<string name="ongoing_notification_channel_description">Descripcion del canal de notificaciones</string>
+	<string name="Liked">Me gusta</string>
+	<string name="Favorited">Es mi favorito</string>
 	<string-array name="fruits">
 		<item>Manzana</item>
 		<item>Pera</item>
