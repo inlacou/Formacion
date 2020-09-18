@@ -38,6 +38,15 @@ public class OkhttpApiCtrl {
 		call.enqueue(callback);
 	}
 
+	public void getPokemonAsync(String url, Callback callback) {
+		Request request = new Request.Builder()
+				.url(url)
+				.build();
+		
+		Call call = client.newCall(request);
+		call.enqueue(callback);
+	}
+
 	public void getPokemonAsync(int id, Callback callback) {
 		Request request = new Request.Builder()
 				.url("https://pokeapi.co/api/v2/pokemon/" + id + "/")

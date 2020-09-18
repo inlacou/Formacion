@@ -3,7 +3,9 @@ package com.inlacou.fivedaysapp.ui.fragments.list;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.inlacou.fivedaysapp.adapters.PokemonStubRvAdapter;
+import com.inlacou.fivedaysapp.business.Pokemon;
 import com.inlacou.fivedaysapp.business.PokemonListResponse;
 import com.inlacou.fivedaysapp.business.PokemonStub;
 import com.inlacou.fivedaysapp.http.OkhttpApiCtrl;
@@ -36,7 +38,19 @@ public class ListFragCtrl {
 		this.view = view;
 		this.model = model;
 		adapter = new PokemonStubRvAdapter(model.list, (view1, index, section) -> {
-			//TODO open detail view, for example
+			OkhttpApiCtrl.instance.getPokemonAsync(section.url, new Callback() {
+				@Override
+				public void onResponse(Call call, Response response) throws IOException {
+					String body = response.body().string();
+					Pokemon pokemon = new Gson().fromJson(body, Pokemon.class);
+					
+				}
+				@Override
+				public void onFailure(Call call, IOException e) {
+					Timber.d("onFailure | exception: " + e.getMessage());
+					//TODO show error
+				}
+			});
 		});
 	}
 
