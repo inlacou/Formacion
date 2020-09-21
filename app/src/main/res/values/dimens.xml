@@ -1,4 +1,5 @@
 <resources>
 	<dimen name="general">16dp</dimen>
 	<dimen name="general_double">32dp</dimen>
+	<dimen name="general_half">8dp</dimen>
 </resources>

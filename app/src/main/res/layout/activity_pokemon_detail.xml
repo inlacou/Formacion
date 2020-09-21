@@ -35,12 +35,14 @@
 				android:id="@+id/iv_front"
 				android:layout_width="0dp"
 				android:layout_height="150dp"
-				android:layout_weight="1"/>
+				android:layout_weight="1"
+				android:scaleType="centerCrop"/>
 			<ImageView
 				android:id="@+id/iv_back"
 				android:layout_width="0dp"
 				android:layout_height="150dp"
-				android:layout_weight="1"/>
+				android:layout_weight="1"
+				android:scaleType="centerCrop"/>
 		</LinearLayout>
 		<TextView
 			android:id="@+id/tv_name"

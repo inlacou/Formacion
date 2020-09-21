@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 
 public class PokemonLikedListItemView extends FrameLayout {
 	
-	@BindView(R.id.rl) View rl = null;
+	@BindView(R.id.root) View root = null;
 	@BindView(R.id.tv_id) TextView tvId;
 	@BindView(R.id.tv_title) TextView tvTitle;
 	@BindView(R.id.iv_front) ImageView ivFront;
@@ -75,7 +75,7 @@ public class PokemonLikedListItemView extends FrameLayout {
 	}
 	
 	private void setListeners() {
-		rl.setOnClickListener(view -> controller.onClick());
+		root.setOnClickListener(view -> controller.onClick());
 	}
 	
 }

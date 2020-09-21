@@ -71,6 +71,20 @@ public class Pokemon implements Comparable<Pokemon> {
 		this.height = height;
 	}
 	
+	public Pokemon(int id, String name, int height, Sprites sprites) {
+		this.id = id;
+		this.name = name;
+		this.height = height;
+		this.sprites = sprites;
+	}
+	
+	public Pokemon(int id, String name, int height, String frontImage, String backImage) {
+		this.id = id;
+		this.name = name;
+		this.height = height;
+		this.sprites = new Sprites(frontImage, backImage);
+	}
+	
 	public Integer getId() {
 		return id;
 	}

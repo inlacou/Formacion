@@ -28,6 +28,8 @@ public class PokemonDb {
 		values.put(PokemonContract.COLUMN_NAME_ID, pokemon.id);
 		values.put(PokemonContract.COLUMN_NAME_NAME, pokemon.name);
 		values.put(PokemonContract.COLUMN_NAME_HEIGHT, pokemon.height);
+		values.put(PokemonContract.COLUMN_NAME_FRONT_IMAGE, pokemon.sprites.frontDefault);
+		values.put(PokemonContract.COLUMN_NAME_BACK_IMAGE, pokemon.sprites.backDefault);
 
 		// Insert the new row, returning the primary key value of the new row
 		return db.insert(PokemonContract.TABLE_NAME, null, values);
@@ -47,7 +49,9 @@ public class PokemonDb {
 		String[] projection = {
 				PokemonContract.COLUMN_NAME_ID,
 				PokemonContract.COLUMN_NAME_NAME,
-				PokemonContract.COLUMN_NAME_HEIGHT
+				PokemonContract.COLUMN_NAME_HEIGHT,
+				PokemonContract.COLUMN_NAME_BACK_IMAGE,
+				PokemonContract.COLUMN_NAME_FRONT_IMAGE
 		};
 
 		// Filter results WHERE "id" =  'provided id'
@@ -70,7 +74,9 @@ public class PokemonDb {
 			Pokemon pokemon = new Pokemon(
 					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_ID)),
 					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_NAME)),
-					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT))
+					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_FRONT_IMAGE)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_BACK_IMAGE))
 			);
 			pokemons.add(pokemon);
 		}
@@ -94,7 +100,9 @@ public class PokemonDb {
 		String[] projection = {
 				PokemonContract.COLUMN_NAME_ID,
 				PokemonContract.COLUMN_NAME_NAME,
-				PokemonContract.COLUMN_NAME_HEIGHT
+				PokemonContract.COLUMN_NAME_HEIGHT,
+				PokemonContract.COLUMN_NAME_BACK_IMAGE,
+				PokemonContract.COLUMN_NAME_FRONT_IMAGE
 		};
 
 		// Filter results WHERE "id" =  'provided id'
@@ -119,7 +127,9 @@ public class PokemonDb {
 			Pokemon pokemon = new Pokemon(
 					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_ID)),
 					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_NAME)),
-					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT))
+					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_FRONT_IMAGE)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_BACK_IMAGE))
 			);
 			pokemons.add(pokemon);
 		}
@@ -144,7 +154,9 @@ public class PokemonDb {
 		String[] projection = {
 				PokemonContract.COLUMN_NAME_ID,
 				PokemonContract.COLUMN_NAME_NAME,
-				PokemonContract.COLUMN_NAME_HEIGHT
+				PokemonContract.COLUMN_NAME_HEIGHT,
+				PokemonContract.COLUMN_NAME_BACK_IMAGE,
+				PokemonContract.COLUMN_NAME_FRONT_IMAGE
 		};
 
 		// Filter results WHERE "id" =  'provided id'
@@ -169,7 +181,9 @@ public class PokemonDb {
 			Pokemon pokemon = new Pokemon(
 					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_ID)),
 					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_NAME)),
-					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT))
+					cursor.getInt(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_HEIGHT)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_FRONT_IMAGE)),
+					cursor.getString(cursor.getColumnIndexOrThrow(PokemonContract.COLUMN_NAME_BACK_IMAGE))
 			);
 			pokemons.add(pokemon);
 		}
