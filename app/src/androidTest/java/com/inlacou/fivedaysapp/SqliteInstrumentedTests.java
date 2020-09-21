@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class SqliteInstrumentedTest {
+public class SqliteInstrumentedTests {
 	
 	Pokemon bulbasaur = new Pokemon(1, "Bulbasaur", 67);
 	Pokemon ivysaur = new Pokemon(2, "Ivysaur", 77);
