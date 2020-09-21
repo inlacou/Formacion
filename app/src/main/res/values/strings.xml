@@ -23,6 +23,7 @@
 	<string name="Liked">Me gusta</string>
 	<string name="Favorited">Es mi favorito</string>
 	<string name="Hashtag_variable">#%1$d</string>
+	<string name="Photo_capture">Capturar foto</string>
 	<string-array name="fruits">
 		<item>Manzana</item>
 		<item>Pera</item>

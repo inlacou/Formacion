@@ -1,17 +1,25 @@
 package com.inlacou.fivedaysapp.ui.fragments.sensors;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorAdditionalInfo;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventCallback;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,12 +33,16 @@ import timber.log.Timber;
 
 public class SensorsFrag extends BaseFragment {
 	
+	private static final int CAMERA_PERMISSION_REQUEST_CODE = 775;
+	private static final int CAMERA_PHOTO_REQUEST_CODE = 778;
+	
 	private SensorsFragMdl model = new SensorsFragMdl();
 	private SensorsFragCtrl controller = new SensorsFragCtrl(this, model);
 	
 	@BindView(R.id.tv_sensor) TextView tvSensor;
-	@BindView(R.id.bt_start_stop)
-	Button btStartStop;
+	@BindView(R.id.bt_start_stop) Button btStartStop;
+	@BindView(R.id.iv_photo) ImageView ivPhoto;
+	@BindView(R.id.bt_photo) Button btPhoto;
 	
 	private SensorManager sensorManager;
 	private Sensor accelerometer;
@@ -92,6 +104,15 @@ public class SensorsFrag extends BaseFragment {
 				super.onSensorAdditionalInfo(info);
 			}
 		};
+		btPhoto.setOnClickListener(view -> {
+			if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+				requestPermissions(new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+			} else {
+				Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				startActivityForResult(cameraIntent, CAMERA_PHOTO_REQUEST_CODE);
+			}
+		});
+		
 	}
 	
 	protected void updateStartStopButtonStatus() {
@@ -117,5 +138,31 @@ public class SensorsFrag extends BaseFragment {
 	@Override
 	public String getTitle() {
 		return "Sensors";
+	}
+	
+	
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+	{
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if (requestCode==CAMERA_PERMISSION_REQUEST_CODE)
+		{
+			if (grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+				Toast.makeText(getActivity(), "camera permission granted", Toast.LENGTH_LONG).show();
+				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+				startActivityForResult(cameraIntent, CAMERA_PHOTO_REQUEST_CODE);
+			} else {
+				Toast.makeText(getActivity(), "camera permission denied", Toast.LENGTH_LONG).show();
+			}
+		}
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode==CAMERA_PHOTO_REQUEST_CODE && resultCode==Activity.RESULT_OK)
+		{
+			Bitmap photo = (Bitmap) data.getExtras().get("data");
+			ivPhoto.setImageBitmap(photo);
+		}
 	}
 }
