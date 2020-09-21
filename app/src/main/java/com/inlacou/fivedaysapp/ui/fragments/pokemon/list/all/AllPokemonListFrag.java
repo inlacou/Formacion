@@ -1,7 +1,6 @@
-package com.inlacou.fivedaysapp.ui.fragments.list;
+package com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +13,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
-public class ListFrag extends BaseFragment {
+public class AllPokemonListFrag extends BaseFragment {
 	
 	protected SwipeRefreshLayout srl = null;
 	protected RecyclerView rv = null;
 	
-	private ListFragMdl model = new ListFragMdl();
-	private ListFragCtrl controller = new ListFragCtrl(this, model);
+	private AllPokemonListFragMdl model = new AllPokemonListFragMdl();
+	private AllPokemonListFragCtrl controller = new AllPokemonListFragCtrl(this, model);
 	
 	@Override
 	public String getTitle() {

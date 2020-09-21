@@ -1,4 +1,4 @@
-package com.inlacou.fivedaysapp.ui.fragments.list;
+package com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,24 +19,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import timber.log.Timber;
 
-public class ListFragCtrl {
+public class AllPokemonListFragCtrl {
 	
 	private static int PAGE_SIZE = 100;
 	
 	private int page = 0;
 	private PokemonStubRvAdapter adapter;
 	
-	private ListFrag view;
-	private ListFragMdl model;
+	private AllPokemonListFrag view;
+	private AllPokemonListFragMdl model;
 	
-	public ListFragCtrl(ListFrag view, ListFragMdl model) {
+	public AllPokemonListFragCtrl(AllPokemonListFrag view, AllPokemonListFragMdl model) {
 		this.view = view;
 		this.model = model;
 		adapter = new PokemonStubRvAdapter(model.list, (view1, index, section) -> {

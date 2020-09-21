@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.inlacou.fivedaysapp.R;
-import com.inlacou.fivedaysapp.ui.fragments.list.ListFrag;
-import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
+import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all.AllPokemonListFrag;
 
 public class FrameAct extends AppCompatActivity {
 	
@@ -35,7 +34,7 @@ public class FrameAct extends AppCompatActivity {
 	}
 	
 	private void initialize() {
-		if(myFragment==null) myFragment = new ListFrag();
+		if(myFragment==null) myFragment = new AllPokemonListFrag();
 	}
 	
 	private void populate() {

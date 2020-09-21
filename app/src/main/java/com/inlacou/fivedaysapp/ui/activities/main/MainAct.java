@@ -10,7 +10,8 @@ import com.inlacou.fivedaysapp.business.MainSection;
 import com.inlacou.fivedaysapp.services.ControlService;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
-import com.inlacou.fivedaysapp.ui.fragments.list.ListFrag;
+import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all.AllPokemonListFrag;
+import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.liked.LikedPokemonListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
 
 import androidx.annotation.NonNull;
@@ -94,7 +95,10 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 				fragment = new RedFrag();
 				break;
 			case POKEMON_LIST:
-				fragment = new ListFrag();
+				fragment = new AllPokemonListFrag();
+				break;
+			case LIKED_POKEMON_LIST:
+				fragment = new LikedPokemonListFrag();
 				break;
 		}
 		if(fragment!=null) {

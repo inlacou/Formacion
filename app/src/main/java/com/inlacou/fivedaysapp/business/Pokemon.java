@@ -6,7 +6,7 @@ import java.util.Objects;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Pokemon {
+public class Pokemon implements Comparable<Pokemon> {
 	
 	@SerializedName("base_experience")
 	@Expose
@@ -71,4 +71,13 @@ public class Pokemon {
 		this.height = height;
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+	
+	@Override
+	public int compareTo(Pokemon pokemon2) {
+		Pokemon pokemon1 = this;
+		if(pokemon1.id>pokemon2.id) return 1; else if(pokemon1.id.equals(pokemon2.id)) return 0; else return -1;
+	}
 }

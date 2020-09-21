@@ -22,6 +22,7 @@
 	<string name="ongoing_notification_channel_description">Descripcion del canal de notificaciones</string>
 	<string name="Liked">Me gusta</string>
 	<string name="Favorited">Es mi favorito</string>
+	<string name="Hashtag_variable">#%1$d</string>
 	<string-array name="fruits">
 		<item>Manzana</item>
 		<item>Pera</item>
