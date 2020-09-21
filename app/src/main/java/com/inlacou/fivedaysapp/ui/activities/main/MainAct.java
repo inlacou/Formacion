@@ -10,6 +10,7 @@ import com.inlacou.fivedaysapp.business.MainSection;
 import com.inlacou.fivedaysapp.services.ControlService;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
+import com.inlacou.fivedaysapp.ui.fragments.bluetooth.BluetoothFrag;
 import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all.AllPokemonListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.liked.LikedPokemonListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
@@ -103,6 +104,9 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 				break;
 			case SENSORS:
 				fragment = new SensorsFrag();
+				break;
+			case BLUETOOTH:
+				fragment = new BluetoothFrag();
 				break;
 		}
 		if(fragment!=null) {

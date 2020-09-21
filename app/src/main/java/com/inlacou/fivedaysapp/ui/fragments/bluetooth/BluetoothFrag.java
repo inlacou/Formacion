@@ -1,9 +1,11 @@
-package com.inlacou.fivedaysapp.ui.fragments.pokemon.list.liked;
+package com.inlacou.fivedaysapp.ui.fragments.bluetooth;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,23 +18,24 @@ import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LikedPokemonListFrag extends BaseFragment {
+public class BluetoothFrag extends BaseFragment {
 	
 	@BindView(R.id.srl) SwipeRefreshLayout srl;
 	@BindView(R.id.rv) RecyclerView rv;
+	@BindView(R.id.btn_dummy_msg) Button btnDummyMsg;
 	
-	private LikedPokemonListFragMdl model = new LikedPokemonListFragMdl();
-	private LikedPokemonListFragCtrl controller = new LikedPokemonListFragCtrl(this, model);
+	private BluetoothFragMdl model = new BluetoothFragMdl();
+	private BluetoothFragCtrl controller = new BluetoothFragCtrl(this, model);
 	
 	@Override
 	public String getTitle() {
-		return "Pokemon list";
+		return "Bluetooth device list";
 	}
 	
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_pokemon_list, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_bluetooth, container, false);
 		
 		initialize(rootView);
 		
@@ -55,6 +58,9 @@ public class LikedPokemonListFrag extends BaseFragment {
 		srl.setOnRefreshListener(() -> {
 			controller.update();
 		});
+		btnDummyMsg.setOnClickListener(view -> {
+			controller.onSendDummyMessageClick();
+		});
 	}
 	
 	protected void onLoaded() {
@@ -65,4 +71,7 @@ public class LikedPokemonListFrag extends BaseFragment {
 		srl.setRefreshing(true);
 	}
 	
+	protected void toast(String s) {
+		Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+	}
 }

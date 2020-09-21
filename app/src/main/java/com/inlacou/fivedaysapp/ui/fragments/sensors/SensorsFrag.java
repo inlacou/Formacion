@@ -173,8 +173,8 @@ public class SensorsFrag extends BaseFragment {
 			Bitmap photo = (Bitmap) data.getExtras().get("data");
 			ivPhoto.setImageBitmap(photo);
 		}
-		if (requestCode== GALLERY_PHOTO_REQUEST_CODE) {
-			if (resultCode == Activity.RESULT_OK) {
+		if (requestCode==GALLERY_PHOTO_REQUEST_CODE) {
+			if (resultCode==Activity.RESULT_OK) {
 				try {
 					final Uri imageUri = data.getData();
 					final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);

@@ -1,5 +1,6 @@
 package com.inlacou.fivedaysapp.adapters;
 
+import android.bluetooth.BluetoothDevice;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.inlacou.fivedaysapp.R;
-import com.inlacou.fivedaysapp.business.PokemonStub;
+import com.inlacou.fivedaysapp.business.DeviceData;
 
 import java.util.List;
 
-public class PokemonStubRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class BluetoothDeviceRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 	
-	private List<PokemonStub> itemList;
+	private List<DeviceData> itemList;
 	public Callback callback;
 	
-	public PokemonStubRvAdapter(List<PokemonStub> itemList, Callback callback) {
+	public BluetoothDeviceRvAdapter(List<DeviceData> itemList, Callback callback) {
 		this.itemList = itemList;
 		this.callback = callback;
 	}
@@ -38,7 +39,7 @@ public class PokemonStubRvAdapter extends RecyclerView.Adapter<RecyclerView.View
 	@Override
 	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 		MyViewHolder myViewHolder = (MyViewHolder) holder;
-		myViewHolder.tv.setText(itemList.get(position).name);
+		myViewHolder.tv.setText(itemList.get(position).deviceName);
 		myViewHolder.itemView.setOnClickListener(view -> callback.onClick(view, position, itemList.get(position)));
 	}
 	
@@ -55,6 +56,6 @@ public class PokemonStubRvAdapter extends RecyclerView.Adapter<RecyclerView.View
 	}
 	
 	public interface Callback {
-		void onClick(View view, int index, PokemonStub pokemonStub);
+		void onClick(View view, int index, DeviceData deviceData);
 	}
 }
