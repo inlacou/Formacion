@@ -7,6 +7,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.adapters.SidebarRvAdapter;
 import com.inlacou.fivedaysapp.business.MainSection;
+import com.inlacou.fivedaysapp.contacts.ContactsCtrl;
 import com.inlacou.fivedaysapp.services.ControlService;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
@@ -80,6 +81,8 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 		rvDrawer.setAdapter(adapterDrawer);
 		rvDrawer.setNestedScrollingEnabled(false);
 		rvDrawer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
+		
+		new ContactsCtrl().work(this);
 	}
 	
 	public void setListeners() {
