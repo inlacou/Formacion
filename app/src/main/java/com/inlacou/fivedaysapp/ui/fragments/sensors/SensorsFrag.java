@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
@@ -24,6 +27,10 @@ public class SensorsFrag extends BaseFragment {
 	
 	private SensorsFragMdl model = new SensorsFragMdl();
 	private SensorsFragCtrl controller = new SensorsFragCtrl(this, model);
+	
+	@BindView(R.id.tv_sensor) TextView tvSensor;
+	@BindView(R.id.bt_start_stop)
+	Button btStartStop;
 	
 	private SensorManager sensorManager;
 	private Sensor accelerometer;
@@ -33,7 +40,7 @@ public class SensorsFrag extends BaseFragment {
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		Timber.d("onCreateView");
-		View rootView = inflater.inflate(R.layout.fragment_red, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_sensors, container, false);
 		
 		initialize(rootView);
 		
@@ -51,9 +58,13 @@ public class SensorsFrag extends BaseFragment {
 	}
 	
 	private void populate() {
+		updateStartStopButtonStatus();
 	}
 	
 	private void setListeners() {
+		btStartStop.setOnClickListener(view -> {
+			controller.onStartStopClick();
+		});
 		accelerometerListener = new SensorEventCallback() {
 			@Override
 			public void onSensorChanged(SensorEvent event) {
@@ -62,7 +73,8 @@ public class SensorsFrag extends BaseFragment {
 				for (int i = 0; i < event.values.length; i++) {
 					s += event.values[i] + ", ";
 				}
-				Timber.d("event.values: " + s);
+				Timber.d("event.values: %s", s);
+				tvSensor.setText(s);
 			}
 			
 			@Override
@@ -80,7 +92,20 @@ public class SensorsFrag extends BaseFragment {
 				super.onSensorAdditionalInfo(info);
 			}
 		};
+	}
+	
+	protected void updateStartStopButtonStatus() {
+		String text;
+		if(model.listening) text = "stop"; else text = "start";
+		btStartStop.setText(text);
+	}
+	
+	protected void startListening() {
 		sensorManager.registerListener(accelerometerListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+	}
+	
+	protected void stopListening() {
+		sensorManager.unregisterListener(accelerometerListener);
 	}
 	
 	@Override
