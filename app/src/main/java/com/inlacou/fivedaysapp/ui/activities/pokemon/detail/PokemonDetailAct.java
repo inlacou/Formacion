@@ -32,7 +32,6 @@ public class PokemonDetailAct extends BaseAct {
 	@BindView(R.id.tv_name) TextView tvName;
 	@BindView(R.id.tv_height) TextView tvHeight;
 	@BindView(R.id.iv_front) ImageView ivFront;
-	@BindView(R.id.iv_back) ImageView ivBack;
 	@BindView(R.id.cb_liked) CheckBox cbLiked;
 	@BindView(R.id.cb_favorite) CheckBox cbFavorited;
 	
@@ -83,10 +82,8 @@ public class PokemonDetailAct extends BaseAct {
 		tvHeight.setText(model.pokemon.height.toString());
 		if(model.usePicasso) {
 			Picasso.get().load(model.pokemon.sprites.frontDefault).into(ivFront);
-			Picasso.get().load(model.pokemon.sprites.backDefault).into(ivBack);
 		} else {
 			Glide.with(this).load(model.pokemon.sprites.frontDefault).into(ivFront);
-			Glide.with(this).load(model.pokemon.sprites.backDefault).into(ivBack);
 		}
 		controller.populate();
 	}
