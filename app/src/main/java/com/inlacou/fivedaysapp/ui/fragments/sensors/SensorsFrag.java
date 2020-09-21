@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Sensor;
 import android.hardware.SensorAdditionalInfo;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventCallback;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -27,6 +29,9 @@ import androidx.annotation.Nullable;
 import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
@@ -35,6 +40,7 @@ public class SensorsFrag extends BaseFragment {
 	
 	private static final int CAMERA_PERMISSION_REQUEST_CODE = 775;
 	private static final int CAMERA_PHOTO_REQUEST_CODE = 778;
+	private static final int GALLERY_PHOTO_REQUEST_CODE = 779;
 	
 	private SensorsFragMdl model = new SensorsFragMdl();
 	private SensorsFragCtrl controller = new SensorsFragCtrl(this, model);
@@ -43,6 +49,7 @@ public class SensorsFrag extends BaseFragment {
 	@BindView(R.id.bt_start_stop) Button btStartStop;
 	@BindView(R.id.iv_photo) ImageView ivPhoto;
 	@BindView(R.id.bt_photo) Button btPhoto;
+	@BindView(R.id.bt_gallery) Button btGallery;
 	
 	private SensorManager sensorManager;
 	private Sensor accelerometer;
@@ -112,7 +119,11 @@ public class SensorsFrag extends BaseFragment {
 				startActivityForResult(cameraIntent, CAMERA_PHOTO_REQUEST_CODE);
 			}
 		});
-		
+		btGallery.setOnClickListener(view -> {
+			Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+			photoPickerIntent.setType("image/*");
+			startActivityForResult(photoPickerIntent, GALLERY_PHOTO_REQUEST_CODE);
+		});
 	}
 	
 	protected void updateStartStopButtonStatus() {
@@ -145,24 +156,37 @@ public class SensorsFrag extends BaseFragment {
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
 	{
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		if (requestCode==CAMERA_PERMISSION_REQUEST_CODE)
-		{
+		if (requestCode==CAMERA_PERMISSION_REQUEST_CODE) {
 			if (grantResults[0]==PackageManager.PERMISSION_GRANTED) {
-				Toast.makeText(getActivity(), "camera permission granted", Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), "CameraPhoto | camera permission granted", Toast.LENGTH_LONG).show();
 				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 				startActivityForResult(cameraIntent, CAMERA_PHOTO_REQUEST_CODE);
 			} else {
-				Toast.makeText(getActivity(), "camera permission denied", Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), "CameraPhoto | camera permission denied", Toast.LENGTH_LONG).show();
 			}
 		}
 	}
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode==CAMERA_PHOTO_REQUEST_CODE && resultCode==Activity.RESULT_OK)
-		{
+		if (requestCode==CAMERA_PHOTO_REQUEST_CODE && resultCode==Activity.RESULT_OK) {
 			Bitmap photo = (Bitmap) data.getExtras().get("data");
 			ivPhoto.setImageBitmap(photo);
+		}
+		if (requestCode== GALLERY_PHOTO_REQUEST_CODE) {
+			if (resultCode == Activity.RESULT_OK) {
+				try {
+					final Uri imageUri = data.getData();
+					final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+					final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+					ivPhoto.setImageBitmap(selectedImage);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+					Toast.makeText(getActivity(), "GalleryPhoto | Something went wrong", Toast.LENGTH_LONG).show();
+				}
+			} else {
+				Toast.makeText(getActivity(), "GalleryPhoto | You haven't picked Image", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 }
