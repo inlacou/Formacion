@@ -13,6 +13,7 @@ import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
 import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.all.AllPokemonListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.pokemon.list.liked.LikedPokemonListFrag;
 import com.inlacou.fivedaysapp.ui.fragments.red.RedFrag;
+import com.inlacou.fivedaysapp.ui.fragments.sensors.SensorsFrag;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -99,6 +100,9 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 				break;
 			case LIKED_POKEMON_LIST:
 				fragment = new LikedPokemonListFrag();
+				break;
+			case SENSORS:
+				fragment = new SensorsFrag();
 				break;
 		}
 		if(fragment!=null) {
