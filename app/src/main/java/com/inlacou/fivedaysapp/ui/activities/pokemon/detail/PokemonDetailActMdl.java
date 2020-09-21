@@ -4,8 +4,9 @@ import com.inlacou.fivedaysapp.business.Pokemon;
 
 public class PokemonDetailActMdl {
 
-	protected Pokemon pokemon;
-	protected Boolean usePicasso = false;
+	public Pokemon pokemon;
+	public Boolean usePicasso = false;
+	public boolean isFavorite = false;
 	
 	public PokemonDetailActMdl(Pokemon pokemon) {
 		this.pokemon = pokemon;

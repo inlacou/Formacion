@@ -4,6 +4,8 @@ import com.inlacou.fivedaysapp.business.Pokemon;
 import com.inlacou.fivedaysapp.datapersistence.sharedpreferences.SharedPrefManager;
 import com.inlacou.fivedaysapp.datapersistence.sqlite.PokemonDb;
 
+import java.util.Objects;
+
 public class PokemonDetailActCtrl {
 	
 	private PokemonDetailAct view;
@@ -17,8 +19,9 @@ public class PokemonDetailActCtrl {
 	protected void populate() {
 		Pokemon pokemon = PokemonDb.retrieveLikedPokemon(view, model.pokemon.id);
 		view.setLiked(pokemon!=null);
-		int favPokemonId = SharedPrefManager.getFavoritePokemonId(view);
-		view.setFavorited(favPokemonId==model.pokemon.id);
+		Integer favPokemonId = SharedPrefManager.getFavoritePokemonId(view);
+		model.isFavorite = Objects.equals(favPokemonId, model.pokemon.id);
+		view.updateFavoriteStatus();
 	}
 	
 	public void onLikedChange(boolean b) {
@@ -32,8 +35,10 @@ public class PokemonDetailActCtrl {
 	public void onFavoritedChange(boolean b) {
 		if(b) {
 			SharedPrefManager.setFavoritePokemonId(view, model.pokemon.id);
+			model.isFavorite = true;
 		} else {
 			SharedPrefManager.setFavoritePokemonId(view, null);
+			model.isFavorite = false;
 		}
 	}
 }

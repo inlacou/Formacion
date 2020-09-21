@@ -4,16 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -26,19 +21,23 @@ import butterknife.ButterKnife;
 
 public class PokemonDetailAct extends BaseAct {
 	
-	private PokemonDetailActMdl model = null;
+	public PokemonDetailActMdl model = null; //model should be inmutable, but...
 	private PokemonDetailActCtrl controller = null;
 	
 	@BindView(R.id.tv_name) TextView tvName;
 	@BindView(R.id.tv_height) TextView tvHeight;
 	@BindView(R.id.iv_front) ImageView ivFront;
 	@BindView(R.id.cb_liked) CheckBox cbLiked;
-	@BindView(R.id.cb_favorite) CheckBox cbFavorited;
+	@BindView(R.id.cb_favorite) public CheckBox cbFavorited;
 	
 	public static void navigate(Activity activity, PokemonDetailActMdl model) {
-		Intent intent = new Intent(activity, PokemonDetailAct.class);
+		activity.startActivity(intent(activity, model));
+	}
+	
+	public static Intent intent(Context context, PokemonDetailActMdl model) {
+		Intent intent = new Intent(context, PokemonDetailAct.class);
 		intent.putExtra("model", new Gson().toJson(model));
-		activity.startActivity(intent);
+		return intent;
 	}
 	
 	@Override
@@ -101,8 +100,8 @@ public class PokemonDetailAct extends BaseAct {
 		cbLiked.setChecked(liked);
 	}
 	
-	protected void setFavorited(Boolean liked) {
-		cbFavorited.setChecked(liked);
+	protected void updateFavoriteStatus() {
+		cbFavorited.setChecked(model.isFavorite);
 	}
 	
 }
