@@ -11,7 +11,7 @@ public class PokemonLikedListItemViewCtrl {
 	}
 	
 	protected void onClick() {
-	
+
 	}
 	
 }

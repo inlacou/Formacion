@@ -8,6 +8,7 @@ import com.inlacou.fivedaysapp.R;
 import com.inlacou.fivedaysapp.adapters.SidebarRvAdapter;
 import com.inlacou.fivedaysapp.business.MainSection;
 import com.inlacou.fivedaysapp.contacts.ContactsCtrl;
+import com.inlacou.fivedaysapp.multitasking.MyRunnable;
 import com.inlacou.fivedaysapp.services.ControlService;
 import com.inlacou.fivedaysapp.ui.fragments.BaseFragment;
 import com.inlacou.fivedaysapp.ui.fragments.blue.BlueFrag;
@@ -32,6 +33,7 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class MainAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	
@@ -59,8 +61,17 @@ public class MainAct extends AppCompatActivity implements NavigationView.OnNavig
 		setListeners();
 		
 		ControlService.start(this);
+
+		MyRunnable mr = new MyRunnable(() -> {
+			Timber.d("algo");
+		});
+		//Empezar
+		new Thread(mr).start();
+
+		//Acabar
+		mr.work = false;
 	}
-	
+
 	public void initialize() {
 		ButterKnife.bind(this);
 		toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

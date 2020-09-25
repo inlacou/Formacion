@@ -17,11 +17,12 @@ public class ContactsCtrl {
 		
 		Cursor cur = activity.getContentResolver().query(
 				ContactsContract.Data.CONTENT_URI,
-				new String[]{
+				new String[] {
 						ContactsContract.Data.DATA1,
 						ContactsContract.Contacts.DISPLAY_NAME,
 						ContactsContract.Contacts.PHOTO_URI,
-						ContactsContract.Data.MIMETYPE },
+						ContactsContract.Data.MIMETYPE
+				},
 				null, null, null);
 		
 		if(cur==null) return;
@@ -42,7 +43,7 @@ public class ContactsCtrl {
 		}
 		
 		cur.close();
-		
+
 		Timber.d("phone retrieval | time spent: " + (System.currentTimeMillis()-start) + "ms");
 	}
 	
