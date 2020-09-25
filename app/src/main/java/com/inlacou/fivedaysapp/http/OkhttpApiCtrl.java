@@ -100,4 +100,17 @@ public class OkhttpApiCtrl {
 		call.enqueue(callback);
 	}
 
+	/**
+	 * Method that gets one pokemon
+	 * @param pokemonUrl the pokemon url
+	 * @return OkHttp3 request object that contains the response or the error
+	 */
+	public Request getPokemonSync(String pokemonUrl) {
+		Request request = new Request.Builder()
+				.url(pokemonUrl)
+				.build();
+
+		Call call = client.newCall(request);
+		return call.request();
+	}
 }

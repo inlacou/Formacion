@@ -10,6 +10,7 @@ import com.inlacou.fivedaysapp.business.PokemonListResponse;
 import com.inlacou.fivedaysapp.business.PokemonStub;
 import com.inlacou.fivedaysapp.http.OkhttpApiCtrl;
 import com.inlacou.fivedaysapp.http.RetrofitApiCtrl;
+import com.inlacou.fivedaysapp.multitasking.GetPokemonAsycTask;
 import com.inlacou.fivedaysapp.ui.activities.pokemon.detail.PokemonDetailAct;
 import com.inlacou.fivedaysapp.ui.activities.pokemon.detail.PokemonDetailActMdl;
 
@@ -38,8 +39,24 @@ public class AllPokemonListFragCtrl {
 	public AllPokemonListFragCtrl(AllPokemonListFrag view, AllPokemonListFragMdl model) {
 		this.view = view;
 		this.model = model;
-		adapter = new PokemonStubRvAdapter(model.list, (view1, index, section) -> {
-			OkhttpApiCtrl.instance.getPokemonAsync(section.url, new Callback() {
+		adapter = new PokemonStubRvAdapter(model.list, (view1, index, pokemon) -> {
+			new GetPokemonAsycTask(new GetPokemonAsycTask.Callback() {
+				@Override
+				public void onProgressUpdate(Integer progress) {
+					//TODO update interfave
+				}
+
+				@Override
+				public void onPreExecute() {
+					//TODO update interface
+				}
+
+				@Override
+				public void onPostExecute() {
+					//TODO update interface
+				}
+			}).execute(pokemon.url);
+			/*OkhttpApiCtrl.instance.getPokemonAsync(section.url, new Callback() {
 				@Override
 				public void onResponse(Call call, Response response) throws IOException {
 					String body = response.body().string();
@@ -50,7 +67,7 @@ public class AllPokemonListFragCtrl {
 					Timber.d("onFailure | exception: " + e.getMessage());
 					//TODO show error
 				}
-			});
+			});*/
 		});
 	}
 
