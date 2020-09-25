@@ -45,13 +45,10 @@ public class BluetoothFragCtrl {
 		view.rv.setLayoutManager(new LinearLayoutManager(view.getActivity(), RecyclerView.VERTICAL, false));
 		
 		//TODO request location permissions to user, we already saw how.
-		
-		// Register for broadcasts when a device is discovered.
-		IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-		view.getActivity().registerReceiver(mReceiver, filter);
-		
+
 		// Register for broadcasts when discovery has finished
-		filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+		IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+		filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
 		view.getActivity().registerReceiver(mReceiver, filter);
 	}
 	
@@ -84,18 +81,16 @@ public class BluetoothFragCtrl {
 				// object and its info from the Intent.
 				BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 				String deviceName = device.getName();
-				if(deviceName==null) deviceName = "Unknown";
+				if (deviceName == null) deviceName = "Unknown";
 				String deviceHardwareAddress = device.getAddress(); // MAC address
-				if(deviceHardwareAddress==null) deviceHardwareAddress = "";
-				
+				if (deviceHardwareAddress == null) deviceHardwareAddress = "";
+
 				DeviceData deviceData = new DeviceData(deviceName, deviceHardwareAddress, device);
 				Timber.d("ACTION_FOUND | " + deviceData);
-				if(!model.list.contains(deviceData)) {
+				if (!model.list.contains(deviceData)) {
 					model.list.add(deviceData);
 				}
-			}
-			
-			if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED==action) {
+			} else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED==action) {
 				Timber.d("ACTION_DISCOVERY_FINISHED");
 				onUpdated();
 			}

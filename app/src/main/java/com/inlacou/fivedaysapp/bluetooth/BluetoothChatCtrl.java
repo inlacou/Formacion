@@ -26,8 +26,7 @@ public class BluetoothChatCtrl {
 	private ConnectThread mConnectThread = null;
 	private ConnectedThread mConnectedThread = null;
 	private Integer mState = 0;
-	private Integer mNewState = 0;
-	
+
 	// Unique UUID for this application
 	private UUID MY_UUID_SECURE = UUID.fromString("0000110a-0000-1000-8000-00805f9b34fb");
 	private UUID MY_UUID_INSECURE = UUID.fromString("d620cd2b-e0a4-435b-b02e-40324d57195b");
@@ -57,7 +56,6 @@ public class BluetoothChatCtrl {
 	public BluetoothChatCtrl(Context context, Handler handler) {
 		mAdapter = BluetoothAdapter.getDefaultAdapter();
 		mState = STATE_NONE;
-		mNewState = mState;
 		mHandler = handler;
 	}
 	
@@ -452,7 +450,7 @@ public class BluetoothChatCtrl {
 			} catch (IOException e) {
 				Timber.e("temp sockets not created " + e);
 			}
-			
+
 			mmInStream = tmpIn;
 			mmOutStream = tmpOut;
 			mState = STATE_CONNECTED;
